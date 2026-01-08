@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Rozha+One&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0f3d32;
+  --color-secondary: #d4af37;
+  --color-cream: #FFF8E7;
+  --color-charcoal: #2A2A2A;
+
+  --font-serif: "Rozha One", "Playfair Display", serif;
+  --font-sans: "Lato", sans-serif;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-charcoal);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-serif);
+}
+
+/* Indian Standard: Veg/Non-Veg Indicators */
+.veg-icon {
+  border: 2px solid #2e7d32;
+  padding: 2px;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.veg-icon-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #2e7d32;
+  border-radius: 50%;
+}
+
+.nonveg-icon {
+  border: 2px solid #c62828;
+  padding: 2px;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nonveg-icon-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #c62828;
+  border-radius: 50%;
+}

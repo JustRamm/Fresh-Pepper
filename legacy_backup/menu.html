@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu | Fresh Pepper</title>
+    <link rel="icon" href="./ASS.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="./ASS.png" alt="Fresh Pepper Logo" class="logo-img">
+            <h1>Fresh Pepper<span>.co</span></h1>
+        </a>
+
+        <div class="cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-badge" id="cart-count">0</span>
+        </div>
+
+        <input type="checkbox" id="check" aria-label="Toggle navigation menu">
+        <label for="check" class="mobile-menu-btn">
+            <i class="fa fa-bars"></i>
+        </label>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html" class="active">Menu</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Menu Header -->
+    <header class="menu-header">
+        <h1>Our Full Menu</h1>
+        <p>Explore the finest selection of authentic dishes.</p>
+    </header>
+
+    <!-- Main Menu Layout -->
+    <div class="menu-layout">
+        <!-- Sidebar Filters -->
+        <aside class="filters-sidebar">
+            <div class="filter-group">
+                <h3><i class="fas fa-filter"></i> Filters</h3>
+
+                <div class="filter-section">
+                    <h4>Categories</h4>
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="veg">Veg</button>
+                    <button class="filter-btn" data-filter="non-veg">Non-Veg</button>
+                    <button class="filter-btn" data-filter="beverages">Beverages</button>
+                </div>
+
+                <div class="filter-section">
+                    <h4>Price Range</h4>
+                    <input type="range" min="0" max="50" value="50" class="price-slider" id="priceRange"
+                        aria-label="Filter by price">
+                    <p>Max Price: $<span id="priceValue">50</span></p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Menu Grid -->
+        <main class="menu-grid" id="menu-grid">
+            <!-- Items injected via JS for dynamic filtering, but adding some static for now -->
+            <!-- Populated by JS -->
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Fresh Pepper.co || All Rights Reserved</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Inline script for Menu Page specific logic (can move to script.js later)
+        const menuItems = [
+            {
+                id: 1,
+                name: "Chicken Pollichath",
+                category: "non-veg",
+                price: 14.99,
+                image: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+                desc: "Traditional preparation wrapped in banana leaves."
+            },
+            {
+                id: 2,
+                name: "Kerala Sadhya",
+                category: "veg",
+                price: 18.99,
+                image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+                desc: "A grand feast of vegetarian dishes."
+            },
+            {
+                id: 3,
+                name: "Signature Biryani",
+                category: "non-veg",
+                price: 16.50,
+                image: "https://images.unsplash.com/photo-1589302168068-964664d93dc0?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+                desc: "Slow-cooked perfection with premium basmati rice."
+            },
+            {
+                id: 4,
+                name: "Puttu & Kadala",
+                category: "veg",
+                price: 10.50,
+                image: "https://images.unsplash.com/photo-1626082927389-d31eb83d3d63?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+                desc: "Steamed rice cake cylinders with chickpea curry."
+            },
+            {
+                id: 5,
+                name: "Spicy Fish Curry",
+                category: "non-veg",
+                price: 15.99,
+                image: "https://images.unsplash.com/photo-1512058564366-18510be2db19?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+                desc: "Fresh catch cooked in tangy coconut sauce."
+            },
+            {
+                id: 6,
+                name: "Masala Dosa",
+                category: "veg",
+                price: 9.99,
+                image: "https://images.unsplash.com/photo-1589301760576-41f47391121f?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+                desc: "Crispy crepe filled with spiced potatoes."
+            },
+            {
+                id: 7,
+                name: "Mango Lassi",
+                category: "beverages",
+                price: 4.99,
+                image: "https://images.unsplash.com/photo-1546173159-315724a31696?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+                desc: "Creamy yogurt drink with fresh mango pulp."
+            },
+            {
+                id: 8,
+                name: "Beef Fry",
+                category: "non-veg",
+                price: 13.99,
+                image: "https://images.unsplash.com/photo-1626776878931-133d59663d2e?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+                desc: "Spicy dry-fried beef with coconut slices."
+            }
+        ];
+
+        const grid = document.getElementById('menu-grid');
+        const priceSlider = document.getElementById('priceRange');
+        const priceValue = document.getElementById('priceValue');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+
+        function renderMenu(items) {
+            grid.innerHTML = items.map(item => `
+                <div class="card reveal active">
+                    <img src="${item.image}" alt="${item.name}" class="card-img">
+                    <div class="card-content">
+                        <div class="badge ${item.category}">${item.category === 'non-veg' ? 'Non-Veg' : item.category === 'veg' ? 'Veg' : 'Drink'}</div>
+                        <h3>${item.name}</h3>
+                        <p>${item.desc}</p>
+                        <div class="price-row">
+                            <span class="price">$${item.price}</span>
+                            <button class="add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            // Re-bind cart listeners (simple implementation)
+            document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    // Quick hack to reuse the main script logic essentially
+                    // Ideally we'd trigger a custom event or reuse the function
+                    const cartCountElement = document.getElementById('cart-count');
+                    let count = parseInt(cartCountElement.innerText) + 1;
+                    cartCountElement.innerText = count;
+                    btn.innerText = 'Added!';
+                    btn.style.backgroundColor = '#2ecc71';
+                    setTimeout(() => {
+                        btn.innerText = 'Add to Cart';
+                        btn.style.backgroundColor = '';
+                    }, 1000);
+                })
+            });
+        }
+
+        // Initial Render
+        renderMenu(menuItems);
+
+        // Filter Logic
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const category = btn.getAttribute('data-filter');
+                const maxPrice = priceSlider.value;
+
+                const filtered = menuItems.filter(item => {
+                    const matchesCategory = category === 'all' || item.category === category;
+                    const matchesPrice = item.price <= maxPrice;
+                    return matchesCategory && matchesPrice;
+                });
+
+                renderMenu(filtered);
+            });
+        });
+
+        // Price Logic
+        priceSlider.addEventListener('input', (e) => {
+            priceValue.innerText = e.target.value;
+            const activeCategoryBtn = document.querySelector('.filter-btn.active');
+            const category = activeCategoryBtn ? activeCategoryBtn.getAttribute('data-filter') : 'all';
+
+            const filtered = menuItems.filter(item => {
+                const matchesCategory = category === 'all' || item.category === category;
+                const matchesPrice = item.price <= e.target.value;
+                return matchesCategory && matchesPrice;
+            });
+            renderMenu(filtered);
+        });
+
+    </script>
+</body>
+
+</html>
